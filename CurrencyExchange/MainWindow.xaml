@@ -12,12 +12,24 @@
             <RowDefinition Height="247*"/>
         </Grid.RowDefinitions>
         <ComboBox HorizontalAlignment="Left" Name="Currency1" Margin="134,102,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0"/>
-        <ComboBox HorizontalAlignment="Left" Name="Currency2" Margin="538,102,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0"/>
-        <Button Content="Convert" Click="Compare_Click" HorizontalAlignment="Left" Margin="362,102,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="" Name="ConversionResult" HorizontalAlignment="Left" Margin="300,10.805,0,0" VerticalAlignment="Top" Width="209" FontSize="16" FontWeight="Bold" Background="White" Grid.Row="1"/>
-        <TextBox Name="amount1" HorizontalAlignment="Left" Height="23" Margin="134,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Name="Currency2" Margin="325,102,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0"/>
+        <Label Content="" Name="ConversionResult" HorizontalAlignment="Left" Margin="495,102,0,0" VerticalAlignment="Top" Width="209" FontSize="16" FontWeight="Bold" Background="White"/>
+        <TextBox Name="amount" TextChanged="amount_TextChanged" HorizontalAlignment="Left" Height="23" Margin="134,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120">
+            <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value=" 10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Label Content="FROM" HorizontalAlignment="Left" Margin="172,71,0,0" VerticalAlignment="Top" Background="White"/>
-        <Label Content="TO" HorizontalAlignment="Left" Margin="586,71,0,0" VerticalAlignment="Top" Background="White"/>
+        <Label Content="TO" HorizontalAlignment="Left" Margin="375,71,0,0" VerticalAlignment="Top" Background="White"/>
+        <Label Content="DKK Kurser - 1" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Height="30" Width="90" Margin="0,5,0,0"/>
+        <Label Content="" Name="USD" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Height="30" Width="90" Margin="125,5,0,0"/>
+        <Label Content="" Name="EUR" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Height="30" Width="90" Margin="225,5,0,0"/>
+        <Label Content="" Name="SEK" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Height="30" Width="90" Margin="325,5,0,0"/>
+        <Label Content="" Name="NOK" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Height="30" Width="90" Margin="425,5,0,0"/>
+        <Label Content="" Name="CAD" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Height="30" Width="90" Margin="525,5,0,0"/>
+        <Label Content="" Name="GBP" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Height="30" Width="90" Margin="625,5,0,0"/>
 
     </Grid>
 </Window>

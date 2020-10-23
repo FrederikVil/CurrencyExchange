@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -42,7 +43,9 @@ namespace CurrencyExchange
             Currency2.Items.Add("CAD");
             Currency2.Items.Add("GBP");
 
-            amount1.Text = "1";
+            fillLabels();
+
+            amount.Text = "1";
 
         }
 
@@ -61,17 +64,46 @@ namespace CurrencyExchange
             return 0;
         }
 
-        private void Compare_Click(object sender, RoutedEventArgs e)
+        private void fillLabels()
         {
-            string apiRequest = "https://api.exchangeratesapi.io/latest?base=" + Currency1.SelectedItem;
+            string api = "https://api.exchangeratesapi.io/latest?base=DKK";
 
-            string c2 = Currency2.SelectedItem.ToString();
+            USD.Content = $"USD {hentCurrency(api, "USD")}";
+            EUR.Content = $"EUR {hentCurrency(api, "EUR")}";
+            SEK.Content = $"SEK {hentCurrency(api, "SEK")}";
+            NOK.Content = $"NOK {hentCurrency(api, "NOK")}";
+            CAD.Content = $"CAD {hentCurrency(api, "CAD")}";
+            GBP.Content = $"GBP {hentCurrency(api, "GBP")}";
 
-            float currencyValue = hentCurrency(apiRequest, c2);
+        }
 
-            int textValue = int.Parse(amount1.Text); 
+        private void amount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (amount.Text == "")
+            {
+                ConversionResult.Content = "";
+            }
+            else
+            {
 
-            ConversionResult.Content = $"{textValue} {Currency1.SelectedItem} = {currencyValue * textValue} {c2}";
+                string apiRequest = "https://api.exchangeratesapi.io/latest?base=" + Currency1.SelectedItem;
+
+                string c2 = Currency2.SelectedItem.ToString();
+
+                float textValue = 1;
+                float currencyValue = hentCurrency(apiRequest, c2);
+                try
+                {
+                    textValue = float.Parse(amount.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Input must be a valid number");
+                }
+
+
+                ConversionResult.Content = $"{textValue} {Currency1.SelectedItem} = {currencyValue * textValue} {c2}";
+            }
         }
     }
 }
